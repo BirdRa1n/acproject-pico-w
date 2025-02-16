@@ -33,6 +33,20 @@ int main()
 {
     stdio_init_all();
 
+    // Inicialização do i2c
+    i2c_init(i2c1, ssd1306_i2c_clock * 1000);
+    gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
+    gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
+    gpio_pull_up(I2C_SDA);
+    gpio_pull_up(I2C_SCL);
+
+    // Configura o LED como saída
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
+    // Processo de inicialização completo do OLED SSD1306
+    ssd1306_init();
+
     while (true)
     {
         printf("Hello, world!\n");
