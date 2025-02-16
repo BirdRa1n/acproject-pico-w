@@ -66,13 +66,11 @@ void filterCommands(const char *jsonString)
     {
       printf("Ligar o LED.\n");
       gpio_put(12, 1);
-      gpio_put(20, 1);
     }
     else if (strcmp(command, "turn_off") == 0)
     {
       printf("Desligar o LED.\n");
       gpio_put(12, 0);
-      gpio_put(20, 0);
     }
 
     // uso do código (pendente)

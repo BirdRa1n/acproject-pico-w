@@ -9,6 +9,17 @@
 #include "src/display/display.h"
 #include "src/mqtt/mqtt.h"
 
+// Configurações de Wi-Fi
+#define WIFI_SSID ""
+#define WIFI_PASS ""
+
+// Pino do LED para indicar conexão
+#define LED_PIN 12
+
+// Configurações do i2c
+const uint I2C_SDA = 14;
+const uint I2C_SCL = 15;
+
 int main()
 {
     stdio_init_all();
