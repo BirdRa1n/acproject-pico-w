@@ -47,9 +47,58 @@ int main()
     // Processo de inicialização completo do OLED SSD1306
     ssd1306_init();
 
+    // Inicializa o Wi-Fi
+    if (cyw43_arch_init())
+    {
+        printf("Erro ao inicializar o Wi-Fi\n");
+
+        // Exibe o texto no display
+        char *text[] = {
+            "ACProject Pico W",
+            "                ",
+            "Erro ao inicializar"};
+        display_show(text, 3);
+        return 1;
+    }
+
+    cyw43_arch_enable_sta_mode();
+    printf("Conectando ao Wi-Fi...\n");
+    piscar_led();
+
+    if (cyw43_arch_wifi_connect_timeout_ms(WIFI_SSID, WIFI_PASS, CYW43_AUTH_WPA2_AES_PSK, 10000))
+    {
+        printf("Falha ao conectar ao Wi-Fi\n");
+
+        // Exibe o texto no display
+        char *text[] = {
+            "WI-FI",
+            "                ",
+            "Falha ao conectar"};
+        display_show(text, 3);
+        return 1;
+    }
+    else
+    {
+        printf("Connected.\n");
+
+        // Exibe o texto no display
+        char *text[] = {
+            "WI-FI CONECTADO",
+            "                ",
+            WIFI_SSID};
+
+        display_show(text, 3);
+    }
+
+    printf("Wi-Fi conectado!\n");
+
+    mqtt_init();
+
     while (true)
     {
-        printf("Hello, world!\n");
-        sleep_ms(1000);
+        cyw43_arch_poll(); // Necessário para manter o Wi-Fi ativo
+        sleep_ms(100);
     }
+
+    return 0;
 }
