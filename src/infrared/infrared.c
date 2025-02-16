@@ -72,8 +72,6 @@ void filterCommands(const char *jsonString)
       printf("Desligar o LED.\n");
       gpio_put(12, 0);
     }
-
-    // uso do código (pendente)
   }
   else
   {
