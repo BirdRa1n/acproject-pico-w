@@ -152,9 +152,9 @@ void mqtt_init()
 
     // Estrutura de informações do cliente MQTT
     struct mqtt_connect_client_info_t client_info = {
-        .client_id = "CHCZ155H6T2M",
-        .client_user = "CHCZ155H6T2M", // Se precisar de autenticação, adicione usuário e senha
-        .client_pass = "4Y1sVsbFYJoizM2CwJwe9aROndDqq2tVcEMyZOllkS6gGDC8bsZfIekVjui",
+        .client_id = "",
+        .client_user = "", // Se precisar de autenticação, adicione usuário e senha
+        .client_pass = "",
         .keep_alive = 60,
         .will_topic = NULL,
         .will_msg = NULL,
