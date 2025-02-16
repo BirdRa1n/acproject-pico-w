@@ -20,6 +20,15 @@
 const uint I2C_SDA = 14;
 const uint I2C_SCL = 15;
 
+// Função para piscar o LED
+void piscar_led()
+{
+    gpio_put(LED_PIN, 1);
+    sleep_ms(100);
+    gpio_put(LED_PIN, 0);
+    sleep_ms(100);
+}
+
 int main()
 {
     stdio_init_all();
