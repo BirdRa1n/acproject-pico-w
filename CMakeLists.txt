@@ -45,12 +45,19 @@ pico_enable_stdio_uart(main 0)
 pico_enable_stdio_usb(main 0)
 
 # Add the standard library to the build
-target_link_libraries(main
-        pico_stdlib)
+target_link_libraries(
+    main
+    pico_stdlib
+    pico_cyw43_arch_lwip_threadsafe_background
+    pico_lwip_mqtt
+    pico_lwip_iperf
+    hardware_i2c
+)
 
 # Add the standard include files to the build
 target_include_directories(main PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
+${CMAKE_CURRENT_LIST_DIR}/src
+${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
