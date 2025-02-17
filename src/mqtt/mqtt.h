@@ -4,7 +4,7 @@
 #include "lwip/apps/mqtt.h"
 
 // Configurações do Broker MQTT
-#define MQTT_BROKER_IP "4.201.175.4"
+#define MQTT_BROKER_IP ""
 #define MQTT_BROKER_PORT 1883
 
 // Configurações do Cliente MQTT

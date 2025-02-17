@@ -59,6 +59,7 @@ void mqtt_incoming_data_cb(void *arg, const u8_t *data, u16_t len, u8_t flags)
             // Processa o JSON completo
             printf("Dados recebidos (completo): %.*s\n", (int)message_len, received_buffer);
             filterCommands(received_buffer);
+            display_show((char *[]){"SERVIDOR MQTT", "", "COMANDO RECEBIDO"}, 3);
 
             // Remove a mensagem processada do buffer
             memmove(received_buffer, received_buffer + message_len, received_buffer_len - message_len);
@@ -78,6 +79,7 @@ void mqtt_subscribe_cb(void *arg, err_t err)
     if (err == ERR_OK)
     {
         printf("Inscrição confirmada!\n");
+        display_show((char *[]){"SERVIDOR MQTT", "", "TOPICO INSERIDO", "", "STATUS:CONFIRMADO"}, 5);
     }
     else
     {
@@ -106,10 +108,12 @@ void publish_message(mqtt_client_t *client, const char *topic, const char *messa
     if (err != ERR_OK)
     {
         printf("Erro ao publicar mensagem no tópico %s: %d\n", topic, err);
+        display_show((char *[]){"SERVIDOR MQTT", "", "ERRO:ERRO PUB"}, 3);
     }
     else
     {
         printf("Mensagem publicada no tópico %s: %s\n", topic, message);
+        display_show((char *[]){"SERVIDOR MQTT", "", "DADOS ENVIADOS"}, 3);
     }
 }
 
@@ -140,6 +144,7 @@ void mqtt_init()
     if (!ipaddr_aton(MQTT_BROKER_IP, &broker_ip)) // Converte o endereço IP para o formato correto
     {
         printf("Erro ao converter o endereço IP do broker MQTT\n");
+        display_show((char *[]){"SERVIDOR MQTT", "", "STATUS: ERROR IP"}, 3);
         return;
     }
 
