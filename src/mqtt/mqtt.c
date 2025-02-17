@@ -121,8 +121,8 @@ void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection_status
         printf("Conectado ao broker MQTT!\n");
 
         // Inscreve-se em um tópico após a conexão
-        subscribe_to_topic(client, "device/CHCZ155H6T2M/commands", 0);
-        subscribe_to_topic(client, "device/CHCZ155H6T2M/logs", 1);
+        subscribe_to_topic(client, "device/serial_do_dispositivo/commands", 0);
+        subscribe_to_topic(client, "device/serial_do_dispositivo/logs", 1);
     }
     else
     {
