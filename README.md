@@ -9,21 +9,21 @@ O **ACProject Pico W** é um projeto desenvolvido para a plataforma **Raspberry 
 A organização dos arquivos do projeto segue a seguinte estrutura:
 
 ```
-/CMakeLists.txt
-/lwipopts.h
-/main.c
-/pico_sdk_import.cmake
-/src
-    /display
+CMakeLists.txt
+lwipopts.h
+main.c
+pico_sdk_import.cmake
+src
+---- display
         display.c
         display.h
-    /infrared
+---- infrared
         infrared.c
         infrared.h
-    /mqtt
+---- mqtt
         mqtt.c
         mqtt.h
-    /ssd1306
+---- ssd1306
         ssd1306.c
         ssd1306.h
         ssd1306_font.h
