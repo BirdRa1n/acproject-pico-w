@@ -1,12 +1,12 @@
-# Documentação do Projeto: ACProject Pico W
+# 📌 Documentação do Projeto: ACProject Pico W
 
-## Descrição do Projeto
+## 📖 Sobre o Projeto
+O **ACProject Pico W** é um projeto desenvolvido para a plataforma **Raspberry Pi Pico W**, integrando funcionalidades de **conectividade Wi-Fi** e **controle de dispositivos via MQTT**. Além disso, o projeto utiliza um **display OLED SSD1306** para exibição de informações e status em tempo real.
 
-O **ACProject Pico W** é um projeto desenvolvido para a plataforma Raspberry Pi Pico W, que integra funcionalidades de conectividade Wi-Fi e controle de dispositivos através de mensagens MQTT. O projeto utiliza um display OLED SSD1306 para exibir informações e status.
+---
 
-## Estrutura do Repositório
-
-O repositório contém a seguinte estrutura de arquivos:
+## 📂 Estrutura do Repositório
+A organização dos arquivos do projeto segue a seguinte estrutura:
 
 ```
 /CMakeLists.txt
@@ -31,59 +31,81 @@ O repositório contém a seguinte estrutura de arquivos:
         ssd1306_i2c.h
 ```
 
-## Dependências
+---
 
-- **Raspberry Pi Pico SDK**: O projeto utiliza a SDK do Raspberry Pi Pico, que deve ser configurada corretamente.
-- **LWIP**: A biblioteca LWIP é utilizada para a implementação da pilha de protocolos TCP/IP.
-- **SSD1306**: Biblioteca para controle do display OLED.
+## 📦 Dependências
+Para que o projeto funcione corretamente, as seguintes bibliotecas e SDKs devem estar configurados:
 
-## Configuração do Ambiente
+- **Raspberry Pi Pico SDK** → Framework de desenvolvimento para o Raspberry Pi Pico W.
+- **LWIP** → Biblioteca para implementação da pilha de protocolos TCP/IP.
+- **SSD1306** → Biblioteca para controle do display OLED SSD1306.
 
-1. **Instalação do SDK**: Certifique-se de que o SDK do Raspberry Pi Pico está instalado e configurado corretamente.
-2. **Configuração do CMake**: O arquivo `CMakeLists.txt` é utilizado para configurar o projeto. Certifique-se de que as dependências estão corretamente referenciadas.
-3. **Configuração do Wi-Fi**: No arquivo `main.c`, defina as credenciais da rede Wi-Fi:
-   ```c
-   #define WIFI_SSID "sua_rede_wifi"
-   #define WIFI_PASS "sua_senha_wifi"
-   ```
-4. **Definição do Cliente MQTT**: No arquivo `mqtt.h`, você deve definir as configurações do cliente MQTT, incluindo o ID do cliente, usuário e senha. Exemplo:
-   ```c
-   // Configurações do Cliente MQTT
-   #define MQTT_CLIENT_ID "seu_id_cliente"
-   #define MQTT_USER "seu_usuario"
-   #define MQTT_PASS "sua_senha"
-   ```
+---
 
-## Funcionalidades
+## ⚙️ Configuração do Ambiente
 
-- **Conexão Wi-Fi**: O projeto conecta-se a uma rede Wi-Fi utilizando as credenciais fornecidas.
-- **MQTT**: Implementa um cliente MQTT que se inscreve em tópicos específicos e processa mensagens recebidas.
-- **Display OLED**: Exibe informações sobre o status da conexão Wi-Fi e mensagens recebidas no display SSD1306.
+### 1️⃣ Instalação do SDK
+Certifique-se de que o **SDK do Raspberry Pi Pico** está instalado e configurado corretamente.
 
-## Estrutura do Código
+### 2️⃣ Configuração do CMake
+O arquivo `CMakeLists.txt` é responsável pela configuração do projeto. Verifique se todas as dependências estão corretamente referenciadas.
 
-### `main.c`
+### 3️⃣ Configuração do Wi-Fi
+No arquivo `main.c`, defina as credenciais da rede Wi-Fi:
+```c
+#define WIFI_SSID "sua_rede_wifi"
+#define WIFI_PASS "sua_senha_wifi"
+```
 
-- Inicializa o sistema e configura o I2C para o display.
-- Conecta-se à rede Wi-Fi e exibe o status no display.
-- Inicializa o cliente MQTT e mantém a conexão ativa.
+### 4️⃣ Definição do Cliente MQTT
+No arquivo `mqtt.h`, configure as credenciais do cliente MQTT:
+```c
+// Configurações do Cliente MQTT
+#define MQTT_CLIENT_ID "seu_id_cliente"
+#define MQTT_USER "seu_usuario"
+#define MQTT_PASS "sua_senha"
+```
 
-### `mqtt.c`
+---
 
-- Implementa as funções para gerenciar a conexão MQTT, incluindo a inscrição em tópicos e o tratamento de mensagens recebidas.
+## 🚀 Funcionalidades
+✅ **Conexão Wi-Fi** → Conecta-se a uma rede Wi-Fi automaticamente.
 
-### `display.c`
+✅ **Cliente MQTT** → Inscreve-se em tópicos e processa mensagens recebidas.
 
-- Contém funções para renderizar texto no display OLED.
+✅ **Display OLED SSD1306** → Exibe status da conexão e mensagens recebidas.
 
-### `infrared.c`
+✅ **Controle Infravermelho** → Processa comandos JSON e controla dispositivos via IR.
 
-- Processa comandos recebidos em formato JSON e executa ações correspondentes, como ligar ou desligar um LED.
+---
 
-### `ssd1306.c`
+## 🛠️ Estrutura do Código
 
-- Implementa a comunicação com o display SSD1306 via I2C e funções para desenhar caracteres e strings.
+### 📌 `main.c`
+🔹 Inicializa o sistema e configura o I2C para o display OLED.
+🔹 Conecta-se à rede Wi-Fi e exibe o status no display.
+🔹 Inicializa e mantém a conexão com o cliente MQTT.
 
-## Licença
+### 📌 `mqtt.c`
+🔹 Gerencia a conexão com o **broker MQTT**.
+🔹 Inscreve-se em tópicos e processa mensagens.
 
+### 📌 `display.c`
+🔹 Renderiza textos no **display OLED SSD1306**.
+
+### 📌 `infrared.c`
+🔹 Processa comandos JSON recebidos e controla **dispositivos infravermelhos**.
+
+### 📌 `ssd1306.c`
+🔹 Implementa a comunicação via **I2C** com o display SSD1306.
+🔹 Permite desenhar caracteres e strings na tela.
+
+---
+
+## 📜 Licença
 Este projeto está licenciado sob a **MIT License**. Consulte o arquivo `LICENSE` para mais detalhes.
+
+---
+
+📌 **Mantenha-se atualizado!** Para futuras melhorias e atualizações, acompanhe este repositório. 🚀
+
