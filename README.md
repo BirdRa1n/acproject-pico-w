@@ -46,6 +46,13 @@ O repositório contém a seguinte estrutura de arquivos:
    #define WIFI_SSID "sua_rede_wifi"
    #define WIFI_PASS "sua_senha_wifi"
    ```
+4. **Definição do Cliente MQTT**: No arquivo `mqtt.h`, você deve definir as configurações do cliente MQTT, incluindo o ID do cliente, usuário e senha. Exemplo:
+   ```c
+   // Configurações do Cliente MQTT
+   #define MQTT_CLIENT_ID "seu_id_cliente"
+   #define MQTT_USER "seu_usuario"
+   #define MQTT_PASS "sua_senha"
+   ```
 
 ## Funcionalidades
 
