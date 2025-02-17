@@ -47,17 +47,15 @@ int main()
     // Processo de inicialização completo do OLED SSD1306
     ssd1306_init();
 
+    display_show((char *[]){"Iniciando..."}, 1);
+
     // Inicializa o Wi-Fi
     if (cyw43_arch_init())
     {
         printf("Erro ao inicializar o Wi-Fi\n");
 
-        // Exibe o texto no display
-        char *text[] = {
-            "ACProject Pico W",
-            "                ",
-            "Erro ao inicializar"};
-        display_show(text, 3);
+        // Exibe erro no display
+        display_show((char *[]){"ACProject Pico W", "", "Erro ao inicializar"}, 3);
         return 1;
     }
 
@@ -69,25 +67,16 @@ int main()
     {
         printf("Falha ao conectar ao Wi-Fi\n");
 
-        // Exibe o texto no display
-        char *text[] = {
-            "WI-FI",
-            "                ",
-            "Falha ao conectar"};
-        display_show(text, 3);
+        // Exibe erro no display
+        display_show((char *[]){"WIFI", "", "FALHA AO CONECTAR"}, 3);
         return 1;
     }
     else
     {
         printf("Connected.\n");
 
-        // Exibe o texto no display
-        char *text[] = {
-            "WI-FI CONECTADO",
-            "                ",
-            WIFI_SSID};
-
-        display_show(text, 3);
+        // Exibe mensagem de sucesso no display
+        display_show((char *[]){"WIFI CONECTADO", "", WIFI_SSID}, 3);
     }
 
     printf("Wi-Fi conectado!\n");

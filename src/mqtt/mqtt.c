@@ -120,6 +120,8 @@ void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection_status
     {
         printf("Conectado ao broker MQTT!\n");
 
+        display_show((char *[]){"SERVIDOR MQTT", "", "STATUS: CONECTADO"}, 3);
+
         // Inscreve-se em um tópico após a conexão
         subscribe_to_topic(client, "device/" MQTT_CLIENT_ID "/commands", 0);
         subscribe_to_topic(client, "device/" MQTT_CLIENT_ID "/logs", 1);
@@ -127,6 +129,7 @@ void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection_status
     else
     {
         printf("Erro na conexao MQTT: %d\n", status);
+        display_show((char *[]){"SERVIDOR MQTT", "", "STATUS: ERROR"}, 3);
     }
 }
 
@@ -144,6 +147,7 @@ void mqtt_init()
     if (mqtt_client == NULL)
     {
         printf("Erro ao criar cliente MQTT\n");
+        display_show((char *[]){"SERVIDOR MQTT", "", "STATUS: ERROR", "", "CLIENT ERROR"}, 5);
         return;
     }
 
