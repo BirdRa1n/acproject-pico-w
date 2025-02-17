@@ -121,8 +121,8 @@ void mqtt_connection_cb(mqtt_client_t *client, void *arg, mqtt_connection_status
         printf("Conectado ao broker MQTT!\n");
 
         // Inscreve-se em um tópico após a conexão
-        subscribe_to_topic(client, "device/serial_do_dispositivo/commands", 0);
-        subscribe_to_topic(client, "device/serial_do_dispositivo/logs", 1);
+        subscribe_to_topic(client, "device/" MQTT_CLIENT_ID "/commands", 0);
+        subscribe_to_topic(client, "device/" MQTT_CLIENT_ID "/logs", 1);
     }
     else
     {
@@ -152,9 +152,9 @@ void mqtt_init()
 
     // Estrutura de informações do cliente MQTT
     struct mqtt_connect_client_info_t client_info = {
-        .client_id = "",
-        .client_user = "", // Se precisar de autenticação, adicione usuário e senha
-        .client_pass = "",
+        .client_id = MQTT_CLIENT_ID,
+        .client_user = MQTT_CLIENT_ID, // Se precisar de autenticação, adicione usuário e senha
+        .client_pass = MQTT_PASS,
         .keep_alive = 60,
         .will_topic = NULL,
         .will_msg = NULL,

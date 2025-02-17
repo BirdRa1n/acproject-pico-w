@@ -7,6 +7,11 @@
 #define MQTT_BROKER_IP "4.201.175.4"
 #define MQTT_BROKER_PORT 1883
 
+// Configurações do Cliente MQTT
+#define MQTT_CLIENT_ID ""
+#define MQTT_USER ""
+#define MQTT_PASS ""
+
 // Declaração da variável global mqtt_client como extern
 extern mqtt_client_t *mqtt_client;
 
